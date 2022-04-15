@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nyumba.apps.NyumbaConfig',
     'crispy_forms',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +76,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nyumbakumi.wsgi.application'
-
+cloudinary.config(
+  cloud_name = "dxeahbkr4",
+  api_key = "396168366874715",
+  api_secret = "3p_fOBiWkCn1ZZ0C-URaBeJxzDI"
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
