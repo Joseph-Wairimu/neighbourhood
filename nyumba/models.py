@@ -13,6 +13,23 @@ class NeighborHood(models.Model):
 
     def __str__(self):
         return self.name
+    def delete_neighborhood(self):
+        self.delete()
+   
+    @classmethod
+    def get_neighborhood(cls, id):
+        neighborhood = cls.objects.get(id=id)
+        return neighborhood
+    def update_neighborhood(self):
+        self.save()
+    def update_occupants_count(self):
+        self.occupants_count = self.occupants.count()
+        self.save()
+    def create_neighborhood(self):
+        self.save()    
+
+
+
 
 class User(models.Model):
     name = models.CharField(max_length=100)
