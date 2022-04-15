@@ -13,3 +13,14 @@ class NeighborHood(models.Model):
 
     def __str__(self):
         return self.name
+
+class User(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)  
+    location = models.CharField(max_length=100)
+    user= models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    neighborhood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
+    profile_pic = CloudinaryField('image', null=True)
+
+    def __str__(self):
+        return self.name
