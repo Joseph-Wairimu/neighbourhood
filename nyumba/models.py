@@ -52,3 +52,14 @@ class Business(models.Model):
 
     def __str__(self):
         return self.name        
+    def create_business(self):
+        self.save()
+    def delete_business(self):
+        self.delete()
+    def update_business(self):
+        self.save()
+    @classmethod
+    def get_business(cls, id):
+        business = cls.objects.get(id=id)
+        return business
+
