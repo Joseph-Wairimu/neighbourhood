@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nyumba.apps.NyumbaConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
