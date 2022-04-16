@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class NeighborHood(models.Model):
+    image=  CloudinaryField('image', null=True)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     occupants_count = models.IntegerField(default=0)
