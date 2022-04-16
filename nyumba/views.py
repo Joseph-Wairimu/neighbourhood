@@ -44,4 +44,6 @@ def edit_profile(request):
     else:
             form = ProfileUpdateForm()
     return render(request, 'edit_profile.html', {"form": form})
-  
+def hoods(request):
+    hoods=NeighborHood.objects.all()
+    return render(request,'hoods.html',{"hoods":hoods}) 
