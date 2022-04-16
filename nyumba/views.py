@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
+from .models import Neighbourhood,Business,User
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -19,3 +20,9 @@ def register(response):
     else:
         form = RegisterForm()
     return render(response, 'register/register.html', {'form': form})    
+def profile(request):
+    current_user=request.user
+    profile=User.objects.filter(user=current_user).first()
+    return render(request,'profile.html',{"profile":profile})
+
+  
