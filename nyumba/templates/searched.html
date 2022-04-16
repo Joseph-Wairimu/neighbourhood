@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+
+    <div class="row text-center" style="color: white; margin-top: 2rem;">
+        {% if hood%}
+          <h4>Found {{ hood|length }} of searched term {{message}}</h4>
+        {% else %}
+          <h4> Found 0 NeighborHoods for the search term {{message}}</h4>
+        {% endif %}
+    
+      </div>
+
+
+      <section class="profile">
+
+        <h4 style="color: aliceblue; padding-top: 1rem;" class="text-center"> NeighborHoods</h4>
+
+      <hr style="color: antiquewhite;">
+      <div class="row" style="padding: 1rem; margin-top: 1rem;">
+      }
+        {% for image in hood %}
+
+      
+            <div class="col-md-4 ">
+                <div class="card">
+                    <img class="card-img-top" src="{{image.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: black;"><span style="font-weight: bold;">Name:</span>{{image.name}}</h5>
+                        <p style="color: black;" > <span  style="font-weight: bold;">Location~</span> {{image.location}}</p>
+                            <p style="color: black;" > <span  style="font-weight: bold;">Neighborhood ~</span> {{image.neighborhood }}</p>
+                            <p style="color: black;" > <span  style="font-weight: bold;">Email~</span> {{image.email }}</p>
+                         
+                        
+
+                        
+                            
+                    </div>
+                </div>
+            </div>
+      
+        {% endfor %}
+      
+    </div>
+
+    </section>
+
+
+
+
+
+
+
+        <style>
+    .one{
+
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1.5rem;
+    }
+    .onee{
+
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:0 1.5rem;
+    margin-top: 0;
+
+
+
+    }
+    .vl {
+    border-left: 1px solid black;
+    height: 3rem;
+    }
+    .ukraine{
+    background-color: black;
+    height: 3rem;
+    }
+    .profile{
+        background-color: #06113C;
+        height: auto;
+        min-height: 37rem;
+    }
+ 
+        </style>
+    
+    </div>
+  
+
+{%endblock%}

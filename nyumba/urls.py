@@ -16,7 +16,7 @@ urlpatterns = [
       path('leavehood/<id>', views.leavehood, name='leavehood'),
       path('singlehood/<id>', views.singlehood, name='singlehood'),
       path('nyumba/search/', views.search_business, name='search_business'),
-
+      path('nyumba/search_hood/', views.search_hood, name='search_hood'),
 
 ]
 

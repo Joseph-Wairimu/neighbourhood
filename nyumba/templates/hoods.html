@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Neighborhood</a>
+              <a class="navbar-brand" href="{%url 'index'%}">Neighborhood</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -33,8 +33,8 @@
                     <a class="nav-link " href="{%url 'add_hood'%}" tabindex="-1" aria-disabled="true">Add-neighborhood</a>
                   </li>
                 </ul>
-                <form class="d-flex" role="search" action="{% url 'search_business' %}">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="business">
+                <form class="d-flex" role="search" action="{% url 'search_hood' %}">
+                  <input class="form-control me-2" type="search" placeholder="Search by hood name" aria-label="Search" name="hood">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 {% if user.is_authenticated %}

@@ -111,3 +111,15 @@ def search_business(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+def search_hood(request):
+    if 'hood' in request.GET and request.GET["hood"]:
+        search_term = request.GET.get("hood")
+        searched_hood = NeighborHood.search_by_hood(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'searched.html',{"message":message,"hood": searched_hood})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'searched.html',{"message":message})        
