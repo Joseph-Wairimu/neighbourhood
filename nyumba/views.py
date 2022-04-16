@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm
+from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm, BusinessForm
 from django.contrib.auth.decorators import login_required
 from .models import NeighborHood,Business,Profile
 # Create your views here.
@@ -65,3 +65,16 @@ def add_hood(request):
 def business(request):   
     business=Business.objects.all()
     return render(request,'business.html',{"business":business})    
+
+def add_business(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form =BusinessForm(request.POST)
+        if form.is_valid():
+           project = form.save(commit=False)
+           project.user = current_user
+           project.save()          
+        return redirect('business')
+    else:
+            form = BusinessForm()
+    return render(request, 'add_business.html', {"form": form})    
