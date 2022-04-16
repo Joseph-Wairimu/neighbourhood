@@ -41,7 +41,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
-
+    def edit_profile(self):
+        self.save()
+    def delete_profile(self):
+        self.delete()
+    def create_profile(self):
+        self.save()
+    def update_profile_pic(self):
+        self.save()
+   
+    @classmethod
+    def get_profile(cls, id):
+        profile = cls.objects.get(id=id)
+        return profile
 class Business(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)  
