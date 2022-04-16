@@ -31,7 +31,7 @@ class NeighborHood(models.Model):
 
 
 
-class User(models.Model):
+class Profile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)  
     location = models.CharField(max_length=100)
