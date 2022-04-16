@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     
     path('',views.index,name='index'),
+      path('nyumba/profile/', views.profile, name='profile'),
     
 
 ]

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Smokum&display=swap" rel="stylesheet">
+    <title>rate</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Neighborhood</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Add-neighborhood</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                {% if user.is_authenticated %}
+        
+                <h6 style="margin-top: 1rem; margin-left: 1rem;"><a style="color: black; font-weight: 400;" href="/logout">LOGOUT</a> 
+              
+              {% else %}
+            
+              <h6 style="margin-top: 1rem;"><a style="color: black; font-weight: 400;" href="/login">REGISTER/LOGIN</a> 
+              {% endif %}
+              </div>
+            </div>
+          </nav>
+        <section class="profile">
+
+            <h4 style="color: aliceblue; padding-top: 1rem;" class="text-center">USER PROFILE</h4>
+
+            <p style="color: white; margin-left: 1.7rem;">Edit your profile <a  href="">here</a></p>
+            {% if profile %}
+            {% for image in profile %}
+
+            <div class="row new">
+                <div class="col-md-4 ">
+                    <div class="card">
+                        <img class="card-img-top" src="{{image.profile_pic.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: black;"><span style="font-weight: bold;">User:</span>{{image.name}}</h5>
+                            <p style="color: black;" > <span  style="font-weight: bold;">Job-title~</span> {{image.location}}</p>
+                                <p style="color: black;" > <span  style="font-weight: bold;">Bio~</span> {{image.neighborhood}}</p>
+                                <p style="color: black;" > <span  style="font-weight: bold;">Date~</span> {{image.email}}</p>
+
+                            
+
+                            
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h1>No profile details</h1>
+            {% endif %}
+
+
+        </section>
+
+
+
+
+
+
+
+            <style>
+        .one{
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1.5rem;
+        }
+        .onee{
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding:0 1.5rem;
+        margin-top: 0;
+
+
+
+        }
+        .vl {
+        border-left: 1px solid black;
+        height: 3rem;
+        }
+        .ukraine{
+        background-color: black;
+        height: 3rem;
+        }
+        .profile{
+            background-color: #06113C;
+            height: auto;
+            min-height: 37rem;
+        }
+        .new{
+            margin:0 1rem;
+        }
+            </style>
+      </div>
+</body>
+</html>

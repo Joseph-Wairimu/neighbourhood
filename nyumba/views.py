@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
-from .models import Neighbourhood,Business,User
+from .models import NeighborHood,Business,User
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
