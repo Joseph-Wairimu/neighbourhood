@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>New Article</title>
+  <title>Nyumbakumi</title>
   {{form.media}}
 
 {% block styles %} {% bootstrap_css %}
@@ -20,7 +20,9 @@
 
 <body>
     <div class="container">
+   
 
+    <h2 class="text-center">Add your hood</h2>
 
   <form  class="me" action="{%url 'add_hood'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
@@ -31,14 +33,14 @@
   <style>
 
     body{
-      background-color: rgb(51, 48, 48);
+      background-color:#363062;
     }
     .me{
         width: auto;
         max-width:60rem ;
          height: auto;
             margin: auto;
-            background-color: black;
+            background-color:#06113C ;
             border-radius: 10px;
             padding: 2rem;
             margin-top: 1rem;

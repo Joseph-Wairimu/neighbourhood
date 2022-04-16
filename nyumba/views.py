@@ -53,7 +53,7 @@ def hoods(request):
 def add_hood(request):
     current_user=request.user
     if request.method == 'POST':
-        form =NeighborHoodForm(request.POST)
+        form =NeighborHoodForm(request.POST, request.FILES)
         if form.is_valid():
            project = form.save(commit=False)
            project.user = current_user
@@ -71,7 +71,7 @@ def business(request):
 def add_business(request):
     current_user=request.user
     if request.method == 'POST':
-        form =BusinessForm(request.POST)
+        form =BusinessForm(request.POST, request.FILES)
         if form.is_valid():
            project = form.save(commit=False)
            project.user = current_user
