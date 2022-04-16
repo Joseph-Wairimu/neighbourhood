@@ -44,7 +44,7 @@ def edit_profile(request):
     else:
             form = ProfileUpdateForm()
     return render(request, 'edit_profile.html', {"form": form})
-    
+
 def hoods(request):
     hoods=NeighborHood.objects.all()
     return render(request,'hoods.html',{"hoods":hoods}) 
@@ -61,3 +61,7 @@ def add_hood(request):
     else:
             form = NeighborHoodForm()
     return render(request, 'add_hood.html', {"form": form})    
+
+def business(request):   
+    business=Business.objects.all()
+    return render(request,'business.html',{"business":business})    

@@ -22,3 +22,5 @@ class NeighborHoodForm(forms.ModelForm):
     class Meta:
         model= NeighborHood
         fields=["image","name","location","occupants_count","occupants"]       
+
+        
