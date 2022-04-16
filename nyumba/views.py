@@ -19,21 +19,29 @@ def register(response):
             return redirect('login')
     else:
         form = RegisterForm()
-    return render(response, 'register/register.html', {'form': form})    
+    return render(response, 'register/register.html', {'form': form})  
+
+@login_required(login_url='login')     
 def profile(request):
     current_user=request.user
     profile=Profile.objects.filter(user=current_user)
     return render(request,'profile.html',{"profile":profile})
 
+@login_required(login_url='login') 
+
+
+
+@login_required(login_url='login') 
 def edit_profile(request):
-    current_user=request.user
-    profile=Profile.objects.filter(user=current_user).first()
+    current_user = request.user
     if request.method == 'POST':
-        form =  ProfileUpdateForm(request.POST,instance=profile)
+        form =ProfileUpdateForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('profile')
+           project = form.save(commit=False)
+           project.user = current_user
+           project.save()          
+        return redirect('profile')
     else:
-        form =  ProfileUpdateForm(instance=profile)
-    return render(request,'edit_profile.html',{"form":form})
+            form = ProfileUpdateForm()
+    return render(request, 'edit_profile.html', {"form": form})
   

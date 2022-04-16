@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nyumba.apps.NyumbaConfig',
     'crispy_forms',
-    'cloudinary'
+    'cloudinary',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
