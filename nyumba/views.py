@@ -22,7 +22,7 @@ def register(response):
     return render(response, 'register/register.html', {'form': form})    
 def profile(request):
     current_user=request.user
-    profile=Profile.objects.filter(user=current_user).first()
+    profile=Profile.objects.filter(user=current_user)
     return render(request,'profile.html',{"profile":profile})
 
 def edit_profile(request):
