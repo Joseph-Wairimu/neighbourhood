@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import RegisterForm, ProfileUpdateForm
+from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm
 from django.contrib.auth.decorators import login_required
 from .models import NeighborHood,Business,Profile
 # Create your views here.
@@ -47,3 +47,16 @@ def edit_profile(request):
 def hoods(request):
     hoods=NeighborHood.objects.all()
     return render(request,'hoods.html',{"hoods":hoods}) 
+
+def add_hood(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form =NeighborHoodForm(request.POST)
+        if form.is_valid():
+           project = form.save(commit=False)
+           project.user = current_user
+           project.save()          
+        return redirect('hoods')
+    else:
+            form = NeighborHoodForm()
+    return render(request, 'add_hood.html', {"form": form})    

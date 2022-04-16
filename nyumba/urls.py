@@ -8,7 +8,8 @@ urlpatterns = [
       path('',views.index,name='index'),
       path('nyumba/profile/', views.profile, name='profile'),
       path('nyumba/edit_profile/', views.edit_profile, name='edit_profile'),
-    
+      path('nyumba/hoods/', views.hoods, name='hoods'),
+      path('nyumba/add_hood/', views.add_hood, name='add_hood'),
 
 ]
 
