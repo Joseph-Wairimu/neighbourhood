@@ -28,7 +28,10 @@ class NeighborHood(models.Model):
         self.save()
     def create_neighborhood(self):
         self.save()    
-
+    @classmethod
+    def search_by_name(cls, search_term):
+        neighborhood = cls.objects.filter(name__icontains=search_term)
+        return neighborhood
 
 
 
