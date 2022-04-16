@@ -10,6 +10,8 @@ urlpatterns = [
       path('nyumba/edit_profile/', views.edit_profile, name='edit_profile'),
       path('nyumba/hoods/', views.hoods, name='hoods'),
       path('nyumba/add_hood/', views.add_hood, name='add_hood'),
+      path('nyumba/business/', views.business, name='business'),
+      path('nyumba/add_business/', views.add_business, name='add_business'),
 
 ]
 

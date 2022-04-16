@@ -27,7 +27,7 @@ def profile(request):
     profile=Profile.objects.filter(user=current_user)
     return render(request,'profile.html',{"profile":profile})
 
-@login_required(login_url='login') 
+
 
 
 
@@ -49,6 +49,7 @@ def hoods(request):
     hoods=NeighborHood.objects.all()
     return render(request,'hoods.html',{"hoods":hoods}) 
 
+@login_required(login_url='login') 
 def add_hood(request):
     current_user=request.user
     if request.method == 'POST':
@@ -65,7 +66,8 @@ def add_hood(request):
 def business(request):   
     business=Business.objects.all()
     return render(request,'business.html',{"business":business})    
-
+    
+@login_required(login_url='login') 
 def add_business(request):
     current_user=request.user
     if request.method == 'POST':
