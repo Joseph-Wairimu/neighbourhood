@@ -37,8 +37,8 @@
                 <a class="nav-link " href="{%url 'add_hood'%}" tabindex="-1" aria-disabled="true">Add-neighborhood</a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" action="{% url 'search_business' %}">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="business">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             {% if user.is_authenticated %}

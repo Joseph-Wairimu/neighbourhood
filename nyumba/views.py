@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm, BusinessForm
 from django.contrib.auth.decorators import login_required
 from .models import NeighborHood,Business,Profile
@@ -80,3 +80,34 @@ def add_business(request):
     else:
             form = BusinessForm()
     return render(request, 'add_business.html', {"form": form})    
+
+@login_required(login_url='login') 
+def joinhood(request, id):
+    image = get_object_or_404(NeighborHood, id=id)
+    request.user.profile.NeighborHood = image
+    request.user.profile.save()
+    return redirect('hoods')
+
+@login_required(login_url='login') 
+def leavehood(request, id):
+    image = get_object_or_404(NeighborHood, id=id)
+    request.user.profile.NeighborHood = None
+    request.user.profile.save()
+    return redirect('hoods')
+
+@login_required(login_url='login') 
+def singlehood(request, id):
+    hood = NeighborHood.objects.get(id=id)
+    return render(request, 'singleNeighborhood.html', {'hood':hood})
+
+def search_business(request):
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_business = Business.search_by_business(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"business": searched_business})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})

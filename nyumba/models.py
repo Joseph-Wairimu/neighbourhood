@@ -42,14 +42,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
-    def edit_profile(self):
-        self.save()
+    def save_profile(self):
+        self.save
     def delete_profile(self):
         self.delete()
-    def create_profile(self):
-        self.save()
-    def update_profile_pic(self):
-        self.save()
+
    
     @classmethod
     def get_profile(cls, id):
@@ -72,7 +69,6 @@ class Business(models.Model):
     def update_business(self):
         self.save()
     @classmethod
-    def get_business(cls, id):
-        business = cls.objects.get(id=id)
-        return business
-
+    def search_by_business(cls,search_term):
+        businesses = cls.objects.filter(name__icontains=search_term)
+        return businesses
