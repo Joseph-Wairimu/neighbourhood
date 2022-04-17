@@ -73,10 +73,15 @@
                     </div>
                 </div>
           
-            
+                <a href="{%url 'post'%}"> <button class="vertical-center btn btn-info">add post</button></a>
+                <a href="{%url 'add_business'%}"> <button class="vertical-center btn btn-info">add business</button></a>
+
+
+            <a href='/nyumba/single_business/{{hood.id}}'> <button class="vertical-center btn btn-info">view Businesses</button></a>
+                <a href='/nyumba/single_post/{{hood.id}}'> <button class="vertical-center btn btn-info">view posts</button></a>
           {% endif %}
         </div>
-
+       
         </section>
 
 

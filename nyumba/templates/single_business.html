@@ -50,45 +50,33 @@
           </nav>
         <section class="profile">
 
-            <h4 style="color: aliceblue; padding-top: 1rem;" class="text-center">NeighborHoods</h4>
+            <h4 style="color: aliceblue; padding-top: 1rem;" class="text-center">Businesses</h4>
 
           <hr style="color: antiquewhite;">
           <div class="row" style="padding: 1rem; margin-top: 1rem;">
-            
-            {% for hood in hoods %}
+            {% if business %}
+          
 
           
                 <div class="col-md-4 ">
                     <div class="card">
-                        <img class="card-img-top" src="{{hood.image.url}}" alt="Card image cap">
+                        <img class="card-img-top" src="{{business.profile_pic.url}}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" style="color: black;"><span style="font-weight: bold;">Name:</span>{{hood.name}}</h5>
-                            <p style="color: black;" > <span  style="font-weight: bold;">Location~</span> {{hood.location}}</p>
-                                <p style="color: black;" > <span  style="font-weight: bold;"> occupants_count~</span> {{hood.occupants_count}}</p>
-                     
+                            <h5 class="card-title" style="color: black;"><span style="font-weight: bold;">Name:</span>{{business.name}}</h5>
+                            <p style="color: black;" > <span  style="font-weight: bold;">Location~</span> {{business.location}}</p>
+                                <p style="color: black;" > <span  style="font-weight: bold;"> Email~</span> {{business.email}}</p>
+                                <p style="color: black;" > <span  style="font-weight: bold;"> NeighborHood~</span> {{business.neighborhood}}</p>
                             
-                          
-                <div style="padding-top:1%;padding-bottom:1%">
-                  
-                    <a class="btn btn-dark btn-small" href="{%url 'singlehood' hood.id%}">View Hood</a>
-                    <a class="btn btn-light" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
-
-
-
-                    <a class="btn btn-dark" href="{%url 'joinhood' hood.id%}">Join NeighborHood</a>
-
-                   
-                </div>
-                            
+          
                                 
                         </div>
                     </div>
                 </div>
           
-            {% endfor %}
-          
+            
+          {% endif %}
         </div>
-
+        <a href="{%url 'add_business'%}"> <button class="vertical-center btn btn-info">add business</button></a>
         </section>
 
 
