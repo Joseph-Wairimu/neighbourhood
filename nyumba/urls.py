@@ -19,7 +19,7 @@ urlpatterns = [
       path('nyumba/search_hood/', views.search_hood, name='search_hood'),
       path('nyumba/post/', views.post, name='post'),
       path('nyumba/single_post/<id>', views.single_post, name='single_post'),
-      path('nyumba/single_business/<id>', views.single_business, name='single_business'),
+      path('nyumba/single_business/<id>/', views.single_business, name='single_business'),
 
 ]
 

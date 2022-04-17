@@ -140,6 +140,8 @@ def post(request):
 def single_post(request, id):
     post = Post.objects.get(id=id)
     return render(request, 'single_post.html', {'post':post})    
+
 def single_business(request, id):
     business = Business.objects.get(id=id)
-    return render(request, 'single_business.html', {'business':business})    
+   
+    return render(request, 'single_business.html', {'business':business})
