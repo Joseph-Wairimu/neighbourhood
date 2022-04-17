@@ -3,13 +3,37 @@ from django.contrib.auth.models import User
 import cloudinary
 from cloudinary.models import CloudinaryField
 
+
 # Create your models here.
+
+
+class Profile(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)  
+    location = models.CharField(max_length=100)
+    user= models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='profile')
+    neighborhood = models.ForeignKey("NeighborHood", on_delete=models.CASCADE, null=True)
+    profile_pic = CloudinaryField('image', null=True)
+
+    def __str__(self):
+          return f'{self.user.name} Profile'
+    def save_profile(self):
+        self.save
+    def delete_profile(self):
+        self.delete()
+
+   
+    @classmethod
+    def get_profile(cls, id):
+        profile = cls.objects.get(id=id)
+        return profile
+
 class NeighborHood(models.Model):
     image=  CloudinaryField('image', null=True)
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     occupants_count = models.IntegerField(default=0)
-    admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    admin = models.ForeignKey("Profile", on_delete=models.CASCADE, null=True, related_name = 'hood')
     occupants = models.ManyToManyField(User, related_name='neighborhoods')
 
     def __str__(self):
@@ -34,33 +58,12 @@ class NeighborHood(models.Model):
         return neighborhood
 
 
-
-class Profile(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)  
-    location = models.CharField(max_length=100)
-    user= models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    neighborhood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
-    profile_pic = CloudinaryField('image', null=True)
-
-    def __str__(self):
-        return self.name
-    def save_profile(self):
-        self.save
-    def delete_profile(self):
-        self.delete()
-
-   
-    @classmethod
-    def get_profile(cls, id):
-        profile = cls.objects.get(id=id)
-        return profile
 class Business(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)  
     location = models.CharField(max_length=100)
     user= models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    neighborhood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
+    neighborhood = models.ForeignKey("NeighborHood", on_delete=models.CASCADE, null=True)
     profile_pic = CloudinaryField('image', null=True)
 
     def __str__(self):

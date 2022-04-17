@@ -83,14 +83,14 @@ def add_business(request):
 
 @login_required(login_url='login') 
 def joinhood(request, id):
-    image = get_object_or_404(NeighborHood, id=id)
-    request.user.profile.NeighborHood = image
+    hood = get_object_or_404(NeighborHood, id=id)
+    request.user.profile.NeighborHood = hood
     request.user.profile.save()
     return redirect('hoods')
 
 @login_required(login_url='login') 
 def leavehood(request, id):
-    image = get_object_or_404(NeighborHood, id=id)
+    hood = get_object_or_404(NeighborHood, id=id)
     request.user.profile.NeighborHood = None
     request.user.profile.save()
     return redirect('hoods')
@@ -123,3 +123,4 @@ def search_hood(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'searched.html',{"message":message})        
+
