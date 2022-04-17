@@ -5,7 +5,7 @@
 
 ## Design
 
-![app](rate/static/assets/site.png) 
+![app](nyumba/static/assets/page.png) 
 
 
 ## Description
