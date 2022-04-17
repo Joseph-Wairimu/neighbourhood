@@ -65,20 +65,21 @@
                             <h5 class="card-title" style="color: black;"><span style="font-weight: bold;">Name:</span>{{image.name}}</h5>
                             <p style="color: black;" > <span  style="font-weight: bold;">Location~</span> {{image.location}}</p>
                                 <p style="color: black;" > <span  style="font-weight: bold;"> occupants_count~</span> {{image.occupants_count}}</p>
-                             
+                     
                             
                           
                 <div style="padding-top:1%;padding-bottom:1%">
-                    {%if request.user.NeighborHood == image %}
+
+                
                     <a class="btn btn-dark btn-small" href="{%url 'singlehood' image.id%}">View Hood</a>
                     <a class="btn btn-light" href="{%url 'leavehood' image.id%}">Leave Hood</a>
 
-                    {%elif not request.user.profile.NeighborHood%}
+          
 
 
                     <a class="btn btn-dark" href="{%url 'joinhood' image.id%}">Join NeighborHood</a>
 
-                    {%endif%}
+                 
                 </div>
                             
                                 
