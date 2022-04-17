@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm, BusinessForm
+from .forms import RegisterForm, ProfileUpdateForm,NeighborHoodForm, BusinessForm, PostForm
 from django.contrib.auth.decorators import login_required
-from .models import NeighborHood,Business,Profile
+from .models import NeighborHood,Business,Profile,Post
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -124,3 +124,15 @@ def search_hood(request):
         message = "You haven't searched for any term"
         return render(request, 'searched.html',{"message":message})        
 
+def post(request):
+    current_user=request.user
+    if request.method == 'POST':
+        form =PostForm(request.POST, request.FILES)
+        if form.is_valid():
+           project = form.save(commit=False)
+           project.user = current_user
+           project.save()          
+        return redirect('hoods')
+    else:
+            form = PostForm()
+    return render(request, 'post.html', {"form": form})
