@@ -78,3 +78,21 @@ class Business(models.Model):
     def search_by_business(cls,search_term):
         businesses = cls.objects.filter(name__icontains=search_term)
         return businesses
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    hood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
+    image = CloudinaryField('image', null=True)
+
+    def __str__(self):
+        return self.title
+    def save_post(self):
+        self.save()
+    def delete_post(self):
+        self.delete()
+    @classmethod
+    def search_by_post(cls, search_term):
+        post = cls.objects.filter(title__icontains=search_term)
+        return post

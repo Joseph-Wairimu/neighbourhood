@@ -69,7 +69,7 @@
                             
                           
                 <div style="padding-top:1%;padding-bottom:1%">
-                    {%if   request.user.profile.NeighborHood == hood %}
+                    {% if  request.user.profile.NeighborHood == hood %}
                     <a class="btn btn-dark btn-small" href="{%url 'singlehood' hood.id%}">View Hood</a>
                     <a class="btn btn-light" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
 
