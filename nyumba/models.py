@@ -16,7 +16,7 @@ class Profile(models.Model):
     profile_pic = CloudinaryField('image', null=True)
 
     def __str__(self):
-          return f'{self.user.name} Profile'
+          return f'{self.user} Profile'
     def save_profile(self):
         self.save
     def delete_profile(self):
